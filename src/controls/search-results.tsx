@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons"
+import { ChevronUpIcon } from "@radix-ui/react-icons"
 
 const calcOpacity = (freq: number) => {
   if (freq >= 100) {
@@ -34,7 +33,7 @@ export const SearchResult = (props: Props) => {
   return (
   <>
     {freq_keys.length > 0 && <Separator className="mt-5 mb-5" />}
-    {freq_keys.map((k) => {
+    {freq_keys.map((k: string) => {
           return (
             <div key={k}>
               <h4 className="h4">
@@ -44,7 +43,7 @@ export const SearchResult = (props: Props) => {
                 </div>
               </h4>
               <ul className="flex flex-wrap">
-                {words[k].map((w: Word) => (
+                {words[Number(k)].map((w: Word) => (
                   <li
                     key={w.word}
                     className={`m-1 p-1 bg-gray-600 ${calcOpacity(

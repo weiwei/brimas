@@ -2,8 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import type z from 'zod';
 import { SearchResult, type Word } from '@/controls/search-results';
-import { SearchForm, type formSchema } from '@/controls/search-form';
+import { SearchForm } from '@/controls/search-form';
 import { Separator } from '@/components/ui/separator';
+import type { formSchema } from './utils';
 
 const SERVER_URL = "https://rimer.fly.dev";
 // const DEV_URL = "http://localhost:8000";
