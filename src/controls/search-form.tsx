@@ -1,25 +1,26 @@
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useForm } from "react-hook-form";
+import { useForm, type ControllerRenderProps } from "react-hook-form";
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
+import { MagnifyingGlassIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons"
 import { formSchema } from "../utils";
+import { useState } from "react";
 
 interface NumericSelectProps {
   placeholder: string;
   items: number[],
-  field: any;
+  field: ControllerRenderProps<z.infer<typeof formSchema>>
 }
 
 const NumberSelect = (props: NumericSelectProps) => {
   const { placeholder, items, field } = props
   return <Select onValueChange={(value) => Number.isNaN(Number(value)) ? field.onChange(0) : field.onChange(Number(value))} defaultValue={String(0)}>
-    <SelectTrigger className="w-[180px]">
+    <SelectTrigger className="w-[120px]">
       <SelectValue placeholder={placeholder} />
     </SelectTrigger>
     <SelectContent>
@@ -36,6 +37,8 @@ interface Props {
 }
 
 export const SearchForm = (props: Props) => {
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(true);
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver:  zodResolver(formSchema),
     defaultValues: {wordToSearch: "", wordFrequency: 0, syllableCount: 0, rhymingType: "consonant", isSeseo: false, isEqBV: true, isYeismo: true},
@@ -58,6 +61,21 @@ export const SearchForm = (props: Props) => {
         )} />
         <Button type="submit" className="flex-none"><MagnifyingGlassIcon /></Button>
         </div>
+        
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium">Advanced Options</span>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
+            className="h-6 w-6 p-0"
+          >
+            {isAdvancedOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+          </Button>
+        </div>
+        
+        {isAdvancedOpen && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5">
           <FormField control={form.control} name={"rhymingType"} render={({ field }) => (
             <FormItem>
@@ -134,6 +152,7 @@ export const SearchForm = (props: Props) => {
             </FormItem>
           )} />
         </div>
+        )}
 
       </form>
     </Form>
