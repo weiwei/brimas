@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className="flex justify-center">
-      <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8", maxWidth: "800px" }} className="p-4">
+      <div className="p-4 w-full max-w-[800px] leading-relaxed font-sans">
         <h1 className="text-2xl text-center m-4">Search for rhyming words in Spanish</h1>
         <SearchForm onClickSearch={fetchWords} />
         <SearchResult words={words}/>
