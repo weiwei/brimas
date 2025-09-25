@@ -58,81 +58,81 @@ export const SearchForm = (props: Props) => {
         )} />
         <Button type="submit" className="flex-none"><MagnifyingGlassIcon /></Button>
         </div>
-        <div className="grid grid-cols-3 gap-x-5 gap-y-5">
-        <FormField control={form.control} name={"rhymingType"} render={({ field }) => (
-          <FormItem>
-            <FormLabel>Rhyming type</FormLabel>
-            <FormControl>
-              <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
-                <FormItem className="flex items-center space-x-3 space-y-0">
-                  <FormControl>
-                    <RadioGroupItem value="consonant" />
-                  </FormControl>
-                  <FormLabel className="font-normal">
-                    Consonant
-                  </FormLabel>
-                  </FormItem>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5">
+          <FormField control={form.control} name={"rhymingType"} render={({ field }) => (
+            <FormItem>
+              <FormLabel>Rhyming type</FormLabel>
+              <FormControl>
+                <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1 gap-0">
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="assonant" />
+                      <RadioGroupItem value="consonant" />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      Assonant
+                      Consonant
                     </FormLabel>
-                  </FormItem>
-              </RadioGroup>
-            </FormControl>
-          </FormItem>
-        )} />
-        <FormField control={form.control} name={"wordFrequency"} render={({ field }) => (
-          <FormItem>
-            <FormLabel>Frequency</FormLabel>
-            <FormControl>
-              <NumberSelect placeholder="Select a number" items={[1, 2, 3, 4, 5]} field={field}/>
-            </FormControl>
-          </FormItem>
-        )} />
-        <FormField control={form.control} name={"syllableCount"} render={({ field }) => (
-          <FormItem>
-            <FormLabel>No. of Syllables</FormLabel>
-            <FormControl>
-              <NumberSelect placeholder="Select a number" items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} field={field}/>
-            </FormControl>
-          </FormItem>
-        )} />
-                <FormField control={form.control} name={"isYeismo"} render={({ field }) => (
-          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-            <FormLabel className="text-sm font-normal">Yeismo</FormLabel>
-            <FormControl>
-              <Checkbox
-                checked={field.value}
-                onCheckedChange={field.onChange}
-              />
-            </FormControl>
-          </FormItem>
-        )} />
-        <FormField control={form.control} name={"isEqBV"} render={({ field }) => (
-          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-            <FormLabel className="text-sm font-normal">B equals V</FormLabel>
-            <FormControl>
-              <Checkbox
-                checked={field.value}
-                onCheckedChange={field.onChange}
-              />            
-            </FormControl>
-          </FormItem>
-        )} />
-        <FormField control={form.control} name={"isSeseo"} render={({ field }) => (
-          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-            <FormLabel className="text-sm font-normal">Seseo</FormLabel>
-            <FormControl>
-              <Checkbox
-                checked={field.value}
-                onCheckedChange={field.onChange}
-              /> 
-            </FormControl>
-          </FormItem>
-        )} />
+                    </FormItem>
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="assonant" />
+                      </FormControl>
+                      <FormLabel className="font-normal">
+                        Assonant
+                      </FormLabel>
+                    </FormItem>
+                </RadioGroup>
+              </FormControl>
+            </FormItem>
+          )} />
+          <FormField control={form.control} name={"wordFrequency"} render={({ field }) => (
+            <FormItem>
+              <FormLabel>Frequency</FormLabel>
+              <FormControl>
+                <NumberSelect placeholder="Select a number" items={[1, 2, 3, 4, 5]} field={field}/>
+              </FormControl>
+            </FormItem>
+          )} />
+          <FormField control={form.control} name={"syllableCount"} render={({ field }) => (
+            <FormItem>
+              <FormLabel>No. of Syllables</FormLabel>
+              <FormControl>
+                <NumberSelect placeholder="Select a number" items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} field={field}/>
+              </FormControl>
+            </FormItem>
+          )} />
+          <FormField control={form.control} name={"isYeismo"} render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormLabel className="text-sm font-normal">Yeismo</FormLabel>
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+            </FormItem>
+          )} />
+          <FormField control={form.control} name={"isEqBV"} render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormLabel className="text-sm font-normal">B equals V</FormLabel>
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />            
+              </FormControl>
+            </FormItem>
+          )} />
+          <FormField control={form.control} name={"isSeseo"} render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormLabel className="text-sm font-normal">Seseo</FormLabel>
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                /> 
+              </FormControl>
+            </FormItem>
+          )} />
         </div>
 
       </form>
